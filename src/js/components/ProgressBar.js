@@ -1,19 +1,13 @@
 import React, {Component} from 'react';
 import '../../scss/App.css';
-
-class ProgressBarItem extends Component {
-    render() {
-        return (
-            <li className="step">
-                <a href="#">
-                    <span className="step-icon">{this.props.number}</span>
-                    <p className="step-label">{this.props.title}</p>
-                </a>
-            </li>)
-    }
-}
+import customData from '../../dataStorage/customData'
+import ProgressBarItem from './ProgressBarItem'
 
 class ProgressBar extends Component {
+    // propTypes={
+    //     counter: this.PropTypes.number.isRequired,
+    //     total: this.PropTypes.number.isRequired
+    // };
     render() {
         return <nav className="stepper" id="progress-navigation">
             <ul>
@@ -38,15 +32,4 @@ class ProgressBar extends Component {
     }
 }
 
-
-class App extends Component {
-    render() {
-        return (
-            <div className="content">
-                <ProgressBar/>
-            </div>
-        );
-    }
-}
-
-export default App;
+export default ProgressBar;

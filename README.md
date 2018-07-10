@@ -6,6 +6,8 @@ Do task for Binamix company
 
 ![alt text](src/img/screen_2.png "")
 
+![alt text](src/img/screen_3.png "")
+
 ## Get Started
 Install dependencies in your project directory with:
 ### `npm install`

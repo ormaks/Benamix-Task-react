@@ -1,6 +1,6 @@
 # Test Task
 
-Do some task for Binamix company
+Do task for Binamix company
 
 ![alt text](src/img/screen_1.png "")
 

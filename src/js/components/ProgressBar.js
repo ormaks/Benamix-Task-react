@@ -1,21 +1,19 @@
-import React, {Component} from 'react';
-import '../../scss/App.css';
+import React from 'react';
 import ProgressBarItem from './ProgressBarItem';
 
-class ProgressBar extends Component {
-    render() {
-        return <nav className="stepper" id="progress-navigation">
-            {[...Array(this.props.total)].map((x, i) =>
+let ProgressBar = (props) => {
+    return (
+        <nav className="stepper" id="progress-navigation">
+            {[...Array(props.total)].map((x, i) =>
                 <ProgressBarItem key={i}
                                  number={i + 1}
                                  title={"Question " + (i + 1)}
-                                 total={this.props.total}
+                                 total={props.total}
                                  counterItem={i + 1}
-                                 activeAns={i < this.props.counter ? ' active' : ''}
-                />
+                                 activeAns={i < props.counter ? ' active' : ''}/>
             )}
-        </nav>;
-    }
-}
+        </nav>)
+};
+
 
 export default ProgressBar;

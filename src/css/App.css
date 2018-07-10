@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -139,6 +140,12 @@ div.items-block {
     flex-wrap: wrap;
 }
 
+div.items-block h1 {
+    width: 100%;
+    margin: 20px auto 60px;
+    text-align: center;
+}
+
 .item {
     display: flex;
     flex-direction: column;
@@ -165,7 +172,7 @@ div.items-block {
 }
 
 .item span.item-price {
-    font-size: 12px
+    font-size: 12px;
 }
 
 .buttons {

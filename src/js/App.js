@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import '../scss/App.css';
-import customData from '../dataStorage/customData'
+
 import Poll from './components/Poll'
 import Result from './components/Result'
+import customData from '../dataStorage/customData'
 
 
 class App extends Component {
@@ -15,20 +15,17 @@ class App extends Component {
             question: '',
             answerOptions: [],
             allQuestions: [],
-            answer: '',
             selectedAnswers: {},
-            result: '',
+            result: false,
             activeAns: true
         };
         this.setNextQuestion = this.setNextQuestion.bind(this);
         this.setPreviousQuestion = this.setPreviousQuestion.bind(this);
         this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
         this.viewResults = this.viewResults.bind(this);
-
     }
 
     handleAnswerSelected = id => event => {
-
         const _self = this;
         const obj = _self.state.selectedAnswers;
         const index = id;
@@ -38,7 +35,6 @@ class App extends Component {
             selectedAnswers: obj,
             activeAns: false
         });
-        console.log(this.state.selectedAnswers);
     };
 
     componentWillMount() {
@@ -49,7 +45,6 @@ class App extends Component {
         });
     }
 
-
     setNextQuestion() {
         const counter = this.state.counter + 1;
         const questionId = this.state.questionId + 1;
@@ -59,7 +54,6 @@ class App extends Component {
             questionId: questionId,
             question: customData[counter].title,
             answerOptions: customData[counter].children,
-            answer: '',
             activeAns: true
         });
     }
@@ -73,7 +67,6 @@ class App extends Component {
             questionId: questionId,
             question: customData[counter].title,
             answerOptions: customData[counter].children,
-            answer: '',
             activeAns: false
         });
     }
@@ -84,10 +77,8 @@ class App extends Component {
                   setNextQuestion={this.setNextQuestion}
                   counter={this.state.counter}
                   setPreviousQuestion={this.setPreviousQuestion}
-                  answer={this.state.answer}
                   selectedAnswer={this.state.selectedAnswers[this.state.counter]}
                   answerOptions={this.state.answerOptions}
-                  questionId={this.state.questionId}
                   question={this.state.question}
                   questionTotal={customData.length}
                   onAnswerSelected={this.handleAnswerSelected}
@@ -99,22 +90,14 @@ class App extends Component {
     renderResult() {
         return (
             <Result answers={this.state.selectedAnswers}
-                    counter={this.state.counter}
-                    selectedAnswer={this.state.selectedAnswers[this.state.counter]}
-                    answerOptions={customData}
-                    questionId={this.state.questionId}
-                    resultsTotal={this.state.selectedAnswers}
-                    onAnswerSelected={this.handleAnswerSelected}
-                    activeAns={this.state.activeAns}
-                    questionTotal={customData.length}/>
+                    answerOptions={customData}/>
         );
     }
 
     viewResults(e) {
-        // e.preventDefault();
+        e.preventDefault();
         this.setState({result: true})
     }
-
 
     render() {
         return (

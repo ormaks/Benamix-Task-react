@@ -21,36 +21,33 @@ img {
 /* Stepper
 -------------------------------------------------- */
 .stepper {
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
-    margin: 40px 0;
+    align-items: center;
+    margin: 40px auto;
     padding-bottom: 40px;
 }
 
-.stepper ul {
-    width: 90%;
-    list-style: none;
-    margin: 0 auto;
+.stepper > div {
     display: flex;
+    width: 100%;
     align-items: center;
-    padding: 0;
-    max-width: 900px;
+}
+
+.stepper > div:first-child {
+    width: auto;
 }
 
 .stepper .step,
-.stepper .step a {
+.stepper .step button {
     display: flex;
     align-items: center;
     flex-direction: column;
     position: relative;
     z-index: 1;
-}
-
-.stepper .step a:hover,
-.stepper .step a:active,
-.stepper .step a:focus {
-    text-decoration: none;
+    border: none;
+    background: transparent;
 }
 
 .stepper .step-icon {
@@ -63,15 +60,11 @@ img {
     position: relative;
     line-height: 30px;
     margin: 0 7px;
-    display: block; /* Added for IE10 */
+    display: block;
 }
 
 .stepper .step.active .step-icon {
     background: #1473c8;
-}
-
-.stepper .step.done .step-icon {
-    background: #0bdea0;
 }
 
 .stepper .step .step-label {
@@ -80,7 +73,7 @@ img {
     position: absolute;
     top: 40px;
     color: #b2b2b2;
-    font-size: 0.929em; /* 13px */
+    font-size: 0.929em;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -101,10 +94,13 @@ img {
 }
 
 .stepper .indicator-line {
-    /*width: 100%;*/
     height: 1px;
     background: #d8d8d8;
     flex: 1;
+}
+
+.stepper .indicator-line.active {
+    background: #1473c8;
 }
 
 /* Small devices Tablets (≥768px) */
@@ -143,24 +139,52 @@ div.items-block {
     flex-wrap: wrap;
 }
 
-div.item {
+.item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 10px 25px;
     transition: all 0.1s linear;
+    background: transparent;
+    border: none;
 }
-div.item:hover {
+
+.item:hover {
     background: rgba(216, 216, 216, 0.67);
     cursor: pointer;
 }
 
-div.item p.item-name {
+.selected-btn {
+    background: rgba(216, 216, 216, 0.8);
+}
+
+.item p.item-name {
     margin: 10px 0;
     font-size: 14px;
 }
 
-div.item span.item-price {
+.item span.item-price {
     font-size: 12px
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.buttons button {
+    padding: 8px 50px;
+    background: #d2d2d2;
+    border: none;
+    border-radius: 2px;
+}
+
+.buttons button:hover {
+    background: #b4b4b4;
+    cursor: pointer;
 }

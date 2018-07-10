@@ -4,10 +4,8 @@ import '../../scss/App.css'
 function Question(props) {
 
     return (
-        <div>
-            <h2 className="title_question">{props.content}</h2>
+            <p className="title_question">{props.content}</p>
 
-        </div>
     );
 }
 

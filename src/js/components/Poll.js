@@ -7,53 +7,51 @@ import Question from './Question'
 import AnswerOption from './AnswerOption'
 
 class Poll extends Component {
-    /*
-        propTypes = {
-            questionId: this.PropTypes.number,
-            selectedAnswer: this.propTypes.func,
-            onAnswerSelected: this.propTypes.func
-        };*/
-
     constructor(props) {
         super(props);
-        /*this.state={
-            questionId: 1,
-        }*/
-    };
-
-    renderAnswerOptions(key, index) {
-        return (
-            <AnswerOption
-                index={index}
-                key={key.id}
-                answerName={key.name}
-                answerAmount={key.balance}
-                answerPicture={key.picture}
-                selectedAnswer={this.props.selectedAnswer}
-                onAnswerSelected={this.props.onAnswerSelected}
-            />
-        );
     }
+
 
     render() {
         return (
             <div>
-                <ProgressBar counter={this.props.counter}
-                    /*counter={this.props.questionId}*/
+
+                <ProgressBar counter={this.props.counter+1}
+                             total={this.props.questionTotal}
+                             activeAns={this.props.activeAns}
                 />
 
-                <p className={"title_question"}>title</p>
                 <Question content={this.props.question}/>
 
                 <div className="items-block">
-                    {this.props.answerOptions.map(this.renderAnswerOptions)}
+                    {this.props.answerOptions.map((key, index) => {
+
+                        return <AnswerOption
+                            index={index}
+                            key={index}
+                            answerName={key.name}
+                            answerAmount={key.balance}
+                            answerPicture={key.picture}
+                            selectedAnswer={this.props.selectedAnswer}
+                            onAnswerSelected={this.props.onAnswerSelected}
+                            questionId={this.props.questionId}
+                        />
+                    })}
                 </div>
 
                 <div className="buttons">
-                    <button className="previous-btn">Previous</button>
-                    <button className="next-btn">Next</button>
+                    {this.props.counter > 0 ? (
+                        <button className="previous-btn" onClick={this.props.setPreviousQuestion}>Previous</button>) : (
+                        <div/>)}
+
+                    {this.props.counter < customData.length - 1 ? (
+                        <button className="next-btn" onClick={this.props.setNextQuestion}
+                                disabled={this.props.activeAns}>Next</button>) : (
+                        <button className="next-btn" onClick={this.props.viewResults}
+                                disabled={this.props.activeAns}>View Results</button>)}
                 </div>
             </div>)
+
     }
 }
 
